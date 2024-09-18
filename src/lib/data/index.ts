@@ -432,6 +432,8 @@ export const getProductByHandle = cache(async function (
 ): Promise<{ product: PricedProduct }> {
   const headers = getMedusaHeaders(["products"])
 
+  let smth = (await medusaClient.productTags.list()).product_tags[0].value
+
   const product = await medusaClient.products
     .list({ handle }, headers)
     .then(({ products }) => products[0])
