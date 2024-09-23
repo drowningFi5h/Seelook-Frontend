@@ -9,6 +9,8 @@ import LocalizedClientLink from "@modules/common/components/localized-client-lin
 import Thumbnail from "../thumbnail"
 import PreviewPrice from "./price"
 
+import {Card, CardContent, CardDescription} from "components/ui/card"
+
 export default async function ProductPreview({
   productPreview,
   isFeatured,
@@ -33,23 +35,29 @@ export default async function ProductPreview({
   })
 
   return (
+    <Card>
     <LocalizedClientLink
       href={`/products/${productPreview.handle}`}
       className="group"
     >
       <div data-testid="product-wrapper">
-        <Thumbnail
+        <CardContent>
+
+        <Thumbnail className={""}
           thumbnail={productPreview.thumbnail}
-          size="full"
+          size="medium"
           isFeatured={isFeatured}
         />
+
         <div className="flex txt-compact-medium mt-4 justify-between">
           <Text className="text-ui-fg-subtle" data-testid="product-title">{productPreview.title}</Text>
-          <div className="flex items-center gap-x-2">
+          <div className="flex items-center">
             {cheapestPrice && <PreviewPrice price={cheapestPrice} />}
           </div>
         </div>
+        </CardContent>
       </div>
     </LocalizedClientLink>
+    </Card>
   )
 }

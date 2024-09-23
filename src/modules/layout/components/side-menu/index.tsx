@@ -21,6 +21,8 @@ const SideMenuItems = {
 const SideMenu = ({ regions }: { regions: Region[] | null }) => {
   const toggleState = useToggleState()
 
+  // @ts-ignore
+  // @ts-ignore
   return (
     <div className="h-full">
       <div className="flex items-center h-full">
@@ -85,10 +87,10 @@ const SideMenu = ({ regions }: { regions: Region[] | null }) => {
                           )}
                         />
                       </div>
-                      <Text className="flex justify-between txt-compact-small">
+                      <text  className="flex justify-between txt-compact-small">
                         © {new Date().getFullYear()} Medusa Store. All rights
                         reserved.
-                      </Text>
+                      </text>
                     </div>
                   </div>
                 </Popover.Panel>
