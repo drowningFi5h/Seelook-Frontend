@@ -1,5 +1,10 @@
-import SearchModal from "@modules/search/templates/search-modal"
+import ProductSearch from '../../../../components/ProductSearch';
 
-export default function SearchModalRoute() {
-  return <SearchModal />
+export default function Home() {
+  return (
+    <div>
+      <h1>Welcome to Seelook</h1>
+      <ProductSearch />
+    </div>
+  );
 }
