@@ -17,13 +17,15 @@ export function SubmitButton({
 }) {
   const { pending } = useFormStatus()
 
+  const safeVariant = variant === null ? undefined : variant;
+
   return (
     <Button
       size="large"
       className={className}
       type="submit"
       isLoading={pending}
-      variant={variant}
+      variant={safeVariant}
       data-testid={dataTestId}
     >
       {children}

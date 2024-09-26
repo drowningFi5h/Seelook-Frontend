@@ -3,6 +3,7 @@
 import React, { useState } from 'react';
 import SearchInput from './SearchInput';
 import { searchProducts } from '@/utils/searchProducts';
+import Image from "next/image"
 
 const ProductSearch: React.FC = () => {
   const [searchResults, setSearchResults] = useState<any[]>([]);
@@ -24,7 +25,7 @@ const ProductSearch: React.FC = () => {
           searchResults.map((product: any) => (
             <div key={product.id} style={{ border: '1px solid #ccc', padding: '10px', marginBottom: '10px' }}>
               {product.thumbnail ? (
-                <img
+                <Image
                   src={product.thumbnail}
                   alt={product.name}
                   style={{ width: '100px', height: '100px', objectFit: 'cover' }}
