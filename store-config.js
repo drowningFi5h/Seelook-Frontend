@@ -6,7 +6,9 @@ function withStoreConfig(nextConfig = {}) {
 
   Object.entries(features).forEach(([key, value]) => {
     if (value) {
-      nextConfig.env[`FEATURE_${key.toUpperCase()}_ENABLED`] = true
+      nextConfig.env[`FEATURE_${key.toUpperCase()}_ENABLED`] = 'true'
+    } else {
+      nextConfig.env[`FEATURE_${key.toUpperCase()}_ENABLED`] = 'false'
     }
   })
 
