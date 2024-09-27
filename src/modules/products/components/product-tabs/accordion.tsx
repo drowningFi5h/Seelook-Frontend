@@ -18,31 +18,27 @@ type AccordionItemProps = AccordionPrimitive.AccordionItemProps & {
 }
 
 type AccordionProps =
-  | (AccordionPrimitive.AccordionSingleProps &
-      React.RefAttributes<HTMLDivElement>)
-  | (AccordionPrimitive.AccordionMultipleProps &
-      React.RefAttributes<HTMLDivElement>)
+  | (AccordionPrimitive.AccordionSingleProps & { type: "single" })
+  | (AccordionPrimitive.AccordionMultipleProps & { type: "multiple" })
 
-const Accordion: React.FC<AccordionProps> & {
-  Item: React.FC<AccordionItemProps>
-} = ({ children, ...props }) => {
-  return (
-    <AccordionPrimitive.Root {...props}>{children}</AccordionPrimitive.Root>
-  )
-}
+const Accordion = React.forwardRef<HTMLDivElement, AccordionProps>((props, ref) => {
+  return <AccordionPrimitive.Root {...props} ref={ref} />
+})
+
+Accordion.displayName = "Accordion"
 
 const Item: React.FC<AccordionItemProps> = ({
-  title,
-  subtitle,
-  description,
-  children,
-  className,
-  headingSize = "large",
-  customTrigger = undefined,
-  forceMountContent = undefined,
-  triggerable,
-  ...props
-}) => {
+                                              title,
+                                              subtitle,
+                                              description,
+                                              children,
+                                              className,
+                                              headingSize = "large",
+                                              customTrigger = undefined,
+                                              forceMountContent = undefined,
+                                              triggerable,
+                                              ...props
+                                            }) => {
   return (
     <AccordionPrimitive.Item
       {...props}
@@ -52,7 +48,6 @@ const Item: React.FC<AccordionItemProps> = ({
         className
       )}
     >
-
       <AccordionPrimitive.Header className="px-1">
         <div className="flex flex-col">
           <div className="flex w-full items-center justify-between">
@@ -85,8 +80,6 @@ const Item: React.FC<AccordionItemProps> = ({
   )
 }
 
-Accordion.Item = Item
-
 const MorphingTrigger = () => {
   return (
     <div className="text-grey-90 hover:bg-grey-5 active:bg-grey-5 active:text-violet-60 focus:border-violet-60 disabled:text-grey-30 bg-transparent disabled:bg-transparent rounded-rounded group relative p-[6px]">
@@ -98,4 +91,10 @@ const MorphingTrigger = () => {
   )
 }
 
-export default Accordion
+const AccordionComponent = Accordion as typeof Accordion & {
+  Item: typeof Item
+}
+
+AccordionComponent.Item = Item
+
+export default AccordionComponent
