@@ -26,7 +26,7 @@ export async function generateStaticParams() {
 
   const categoryHandles = product_categories.map((category) => category.handle)
 
-  const staticParams = countryCodes
+  return countryCodes
     ?.map((countryCode) =>
       categoryHandles.map((handle) => ({
         countryCode,
@@ -34,8 +34,6 @@ export async function generateStaticParams() {
       }))
     )
     .flat()
-
-  return staticParams
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
