@@ -14,13 +14,12 @@ import LocalizedClientLink from "@modules/common/components/localized-client-lin
 import Thumbnail from "@modules/products/components/thumbnail"
 
 const CartDropdown = ({
-  cart: cartState,
-}: {
+                        cart: cartState,
+                      }: {
   cart?: Omit<Cart, "beforeInsert" | "afterLoad"> | null
 }) => {
-  const [activeTimer, setActiveTimer] = useState<NodeJS.Timer | undefined>(
-    undefined
-  )
+  // Use 'ReturnType<typeof setTimeout>' to cover both environments
+  const [activeTimer, setActiveTimer] = useState<ReturnType<typeof setTimeout> | undefined>(undefined)
   const [cartDropdownOpen, setCartDropdownOpen] = useState(false)
 
   const { countryCode } = useParams()
