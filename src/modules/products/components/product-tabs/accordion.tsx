@@ -22,6 +22,7 @@ type AccordionProps =
   | (AccordionPrimitive.AccordionMultipleProps & { type: "multiple" })
 
 const Accordion = React.forwardRef<HTMLDivElement, AccordionProps>((props, ref) => {
+  // @ts-ignore
   return <AccordionPrimitive.Root {...props} ref={ref} />
 })
 
@@ -40,6 +41,7 @@ const Item: React.FC<AccordionItemProps> = ({
                                               ...props
                                             }) => {
   return (
+    // @ts-ignore
     <AccordionPrimitive.Item
       {...props}
       className={clx(
