@@ -55,14 +55,6 @@ export default async function Nav() {
                 </LocalizedClientLink>
               )}
             </div>
-            <LocalizedClientLink
-              className="w-8 h-8 bg-gray-100 rounded-full flex items-center justify-center hover:bg-gray-200 transition-colors"
-              href="/account"
-              data-testid="nav-account-link"
-            >
-              <span className="sr-only">Account</span>
-              {/* You can add an icon here if you have one */}
-            </LocalizedClientLink>
             <button className="relative">
               <ShoppingCart className="w-6 h-6 text-gray-700" />
               <span className="absolute -top-1 -right-1 bg-blue-600 text-white text-xs rounded-full w-4 h-4 flex items-center justify-center">
