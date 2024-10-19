@@ -440,7 +440,6 @@ export const getProductByHandle = cache(async function (
     .catch((err) => {
       throw err
     })
-
   return { product }
 })
 

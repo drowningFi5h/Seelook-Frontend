@@ -20,6 +20,8 @@ export default async function ProductPreview({
   isFeatured?: boolean
   region: Region
 }) {
+
+  // console.log("product --> ", productPreview);
   const pricedProduct = await retrievePricedProductById({
     id: productPreview.id,
     regionId: region.id,
