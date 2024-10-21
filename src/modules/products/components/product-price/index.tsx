@@ -29,9 +29,9 @@ export default function ProductPrice({
   }
 
   return (
-    <div className="flex flex-col text-ui-fg-base">
+    <div className="flex flex-col text-ui-fg-base font-bold text-2xl">
       <span
-        className={clx("text-xl-semi", {
+        className={clx("text-2xl-semi", {
           "text-ui-fg-interactive": selectedPrice.price_type === "sale",
         })}
       >

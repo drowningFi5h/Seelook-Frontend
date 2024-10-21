@@ -1,16 +1,21 @@
 import { Region } from "@medusajs/medusa"
 import { PricedProduct } from "@medusajs/medusa/dist/types/pricing"
 import React, { Suspense } from "react"
-
+import { Button } from "@/components/ui/button"
+import { Heading } from "@medusajs/ui"
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion"
 import ImageGallery from "@modules/products/components/image-gallery"
-import ProductActions from "@modules/products/components/product-actions"
-import ProductOnboardingCta from "@modules/products/components/product-onboarding-cta"
-import ProductTabs from "@modules/products/components/product-tabs"
 import RelatedProducts from "@modules/products/components/related-products"
 import ProductInfo from "@modules/products/templates/product-info"
 import SkeletonRelatedProducts from "@modules/skeletons/templates/skeleton-related-products"
 import { notFound } from "next/navigation"
 import ProductActionsWrapper from "./product-actions-wrapper"
+import { Heading1 } from "lucide-react"
 
 type ProductTemplateProps = {
   product: PricedProduct
@@ -19,51 +24,64 @@ type ProductTemplateProps = {
 }
 
 const ProductTemplate: React.FC<ProductTemplateProps> = ({
-  product,
-  region,
-  countryCode,
-}) => {
+                                                           product,
+                                                           region,
+                                                           countryCode,
+                                                         }) => {
   if (!product || !product.id) {
     return notFound()
   }
 
   return (
-    <>
-      <div
-        className="content-container flex flex-col small:flex-row small:items-start py-6 relative"
-        data-testid="product-container"
-      >
-        <div className="flex flex-col small:sticky small:top-48 small:py-0 small:max-w-[300px] w-full py-8 gap-y-6">
-          <ProductInfo product={product} />
-          <ProductTabs product={product} />
+    <div className="min-h-screen bg-white">
+      <main className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Main product section */}
+        <div className="flex flex-col md:flex-row gap-12 py-12">
+          {/* Left side - Image Gallery */}
+          <div className="md:w-[60%]">
+              <ImageGallery images={product?.images || []} />
+          </div>
+
+          {/* Right side - Product Info */}
+          <div className="md:w-[40%] space-y-8">
+            <div className="space-y-4">
+              <Heading className="text-xl font-bold text-gray-900 ">{product.title}</Heading>
+            </div>
+
+            {/* Product details accordion */}
+            <Accordion type="single" collapsible className="w-full ">
+              <AccordionItem value="description">
+                <AccordionTrigger className="text-gray-800">Product Description</AccordionTrigger>
+                <AccordionContent className="text-gray-600">
+                  {product.description}
+                </AccordionContent>
+              </AccordionItem>
+              <AccordionItem value="details">
+                <AccordionTrigger className="text-gray-800">Product Details</AccordionTrigger>
+                <AccordionContent className="text-gray-600">
+                  <ProductInfo product={product} />
+                </AccordionContent>
+              </AccordionItem>
+            </Accordion>
+
+            {/* Action buttons */}
+            <div className="space-y-4">
+              <Suspense fallback={<Button className="w-full bg-gray-800 text-white" disabled>Loading...</Button>}>
+                <ProductActionsWrapper id={product.id} region={region} />
+              </Suspense>
+            </div>
+          </div>
         </div>
-        <div className="block w-full relative">
-          <ImageGallery images={product?.images || []} />
-        </div>
-        <div className="flex flex-col small:sticky small:top-48 small:py-0 small:max-w-[300px] w-full py-8 gap-y-12">
-          <ProductOnboardingCta />
-          <Suspense
-            fallback={
-              <ProductActions
-                disabled={true}
-                product={product}
-                region={region}
-              />
-            }
-          >
-            <ProductActionsWrapper id={product.id} region={region} />
+
+        {/* Related products section */}
+        <div className="py-16 border-t border-gray-300">
+          <h2 className="text-2xl font-semibold text-gray-900 mb-8">You May Also Like</h2>
+          <Suspense fallback={<SkeletonRelatedProducts />}>
+            <RelatedProducts product={product} countryCode={countryCode} />
           </Suspense>
         </div>
-      </div>
-      <div
-        className="content-container my-16 small:my-32"
-        data-testid="related-products-container"
-      >
-        <Suspense fallback={<SkeletonRelatedProducts />}>
-          <RelatedProducts product={product} countryCode={countryCode} />
-        </Suspense>
-      </div>
-    </>
+      </main>
+    </div>
   )
 }
 

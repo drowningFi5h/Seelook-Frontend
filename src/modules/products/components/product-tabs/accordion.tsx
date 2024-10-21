@@ -68,7 +68,7 @@ const Item: React.FC<AccordionItemProps> = ({
       <AccordionPrimitive.Content
         forceMount={forceMountContent}
         className={clx(
-          "radix-state-closed:animate-accordion-close radix-state-open:animate-accordion-open radix-state-closed:pointer-events-none px-1"
+          "radix-state-closed:animate-accordion.tsx-close radix-state-open:animate-accordion.tsx-open radix-state-closed:pointer-events-none px-1"
         )}
       >
         <div className="inter-base-regular group-radix-state-closed:animate-accordion-close">

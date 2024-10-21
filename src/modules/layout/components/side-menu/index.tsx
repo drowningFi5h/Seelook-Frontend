@@ -34,7 +34,7 @@ const SideMenu = ({ regions }: { regions: Region[] | null, toggleSidebar?: () =>
             <div>
               {/* Header */}
               <div className="flex h-14 items-center px-4 lg:h-[60px] lg:px-6">
-                <Link href="/" className="flex items-center gap-2 font-semibold text-2xl ">
+                <Link href="/" className="flex items-center gap-2 font-semibold text-2xl text-blue-600 hover:text-blue-400 ">
                   {/*<Package2 className="h-6 w-6" />*/}
                   {/* Brand Icon */}
                   <span className="">SEELOOK</span>
@@ -51,28 +51,28 @@ const SideMenu = ({ regions }: { regions: Region[] | null, toggleSidebar?: () =>
                 <nav className="grid items-start px-2 text-sm font-medium lg:px-4">
                   <LocalizedClientLink
                     href="/store"
-                    className="flex items-center gap-3 rounded-lg px-3 py-5 text-muted-foreground hover:text-primary hover:text-blue-400 border-t text-gray-700 hover:bg-gray-200 transition-colors"
+                    className="flex items-center gap-3 rounded-lg px-3 py-5 text-muted-foreground hover:text-primary hover:text-white border-t text-gray-700 hover:bg-blue-300 transition-colors"
                   >
                     <Shirt className="h-4 w-4" />
                     Retail
                   </LocalizedClientLink>
                   <Link
                     href="/wholesale"
-                    className="flex items-center gap-3 rounded-lg px-3 py-5 text-muted-foreground hover:text-primary hover:text-blue-400 border-t text-gray-700 hover:bg-gray-200 transition-colors"
+                    className="flex items-center gap-3 rounded-lg px-3 py-5 text-muted-foreground hover:text-primary hover:text-white border-t text-gray-700 hover:bg-blue-300 transition-colors"
                   >
                     <ShoppingBasket className="h-4 w-4" />
                     Wholesale
                   </Link>
                   <Link
                     href="/store"
-                    className="flex items-center gap-3 rounded-lg bg-muted px-3 py-5 text-primar hover:text-primary hover:text-blue-400 border-t text-gray-700 hover:bg-gray-200 transition-colors"
+                    className="flex items-center gap-3 rounded-lg bg-muted px-3 py-5 text-primar hover:text-primary hover:text-white border-t text-gray-700 hover:bg-blue-300 transition-colors"
                   >
                     <Package className="h-4 w-4" />
                     Collections
                   </Link>
 
                   <LocalizedClientLink
-                    className="flex items-center gap-3 rounded-lg px-3 py-5 text-muted-foreground hover:text-primary hover:text-blue-400 border-t text-gray-700 hover:bg-gray-200 transition-colors"
+                    className="flex items-center gap-3 rounded-lg px-3 py-5 text-muted-foreground hover:text-primary hover:text-white border-t text-gray-700 hover:bg-blue-300 transition-colors"
                     href="/account"
                     data-testid="nav-account-link"
                   >
@@ -93,8 +93,8 @@ const SideMenu = ({ regions }: { regions: Region[] | null, toggleSidebar?: () =>
                     Place custom or special orders.
                   </CardDescription>
                 </CardHeader>
-                <CardContent className="p-2 pt-0 md:p-4 md:pt-0">
-                  <Button size="sm" className="w-full">
+                <CardContent className="p-2 pt-0 md:p-4 md:pt-0 ">
+                  <Button size="sm" className="w-full hover:bg-emerald-600 hover:text-white" >
                     Whatsapp
                   </Button>
                   </CardContent>

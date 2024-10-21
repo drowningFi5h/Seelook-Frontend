@@ -8,9 +8,9 @@ import { ProductCollectionWithPreviews } from "types/global"
 import { cache } from "react"
 
 export const metadata: Metadata = {
-  title: "Medusa Next.js Starter Template",
+  title: "FashionFlow E-commerce",
   description:
-    "A performant frontend ecommerce starter template with Next.js 14 and Medusa.",
+    "A stylish and performant e-commerce store built with Next.js 14 and Medusa.",
 }
 
 const getCollectionsWithProducts = cache(
@@ -55,8 +55,8 @@ const getCollectionsWithProducts = cache(
 )
 
 export default async function Home({
-  params: { countryCode },
-}: {
+                                     params: { countryCode },
+                                   }: {
   params: { countryCode: string }
 }) {
   const collections = await getCollectionsWithProducts(countryCode)
@@ -69,10 +69,12 @@ export default async function Home({
   return (
     <>
       <Hero />
-      <div className="py-12">
-        <ul className="flex flex-col gap-x-6">
-          <FeaturedProducts collections={collections} region={region} />
-        </ul>
+      <div className="py-12 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            <FeaturedProducts collections={collections} region={region} />
+          </div>
+        </div>
       </div>
     </>
   )

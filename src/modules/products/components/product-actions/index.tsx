@@ -2,7 +2,7 @@
 
 import { Region } from "@medusajs/medusa"
 import { PricedProduct } from "@medusajs/medusa/dist/types/pricing"
-import { Button } from "@medusajs/ui"
+import { Button, clx } from "@medusajs/ui"
 import { isEqual } from "lodash"
 import { useParams } from "next/navigation"
 import { useEffect, useMemo, useRef, useState } from "react"
@@ -137,7 +137,7 @@ export default function ProductActions({
 
   return (
     <>
-      <div className="flex flex-col gap-y-2" ref={actionsRef}>
+      <div className="flex flex-col gap-y-8 " ref={actionsRef}>
         <div>
           {product.variants.length > 1 && (
             <div className="flex flex-col gap-y-4">
@@ -166,16 +166,25 @@ export default function ProductActions({
           onClick={handleAddToCart}
           disabled={!inStock || !variant || !!disabled || isAdding}
           variant="primary"
-          className="w-full h-10"
+          className={clx(
+            "w-full h-10 flex items-center justify-center rounded transition-colors duration-200",
+            {
+              "bg-gray-300 text-gray-600 cursor-not-allowed": !inStock || !variant || !!disabled || isAdding,
+              "bg-black text-white hover:bg-gray-900 hover:text-gray-200": inStock && variant && !disabled && !isAdding,
+            }
+          )}
           isLoading={isAdding}
           data-testid="add-product-button"
         >
           {!variant
             ? "Select variant"
             : !inStock
-            ? "Out of stock"
-            : "Add to cart"}
+              ? "Out of stock"
+              : isAdding
+                ? "Adding..."
+                : "Add to cart"}
         </Button>
+
         <MobileActions
           product={product}
           variant={variant}

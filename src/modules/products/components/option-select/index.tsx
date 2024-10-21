@@ -14,44 +14,44 @@ type OptionSelectProps = {
 }
 
 const OptionSelect: React.FC<OptionSelectProps> = ({
-  option,
-  current,
-  updateOption,
-  title,
-  "data-testid": dataTestId,
-  disabled,
-}) => {
+                                                     option,
+                                                     current,
+                                                     updateOption,
+                                                     title,
+                                                     "data-testid": dataTestId,
+                                                     disabled,
+                                                   }) => {
   const filteredOptions = option.values.map((v) => v.value).filter(onlyUnique)
 
   return (
-    <div className="flex flex-col gap-y-3">
-      <span className="text-sm">Select {title}</span>
+    <div className="flex items-center gap-x-4"> {/* Horizontal layout with gap */}
+      <span className="text-sm text-gray-800">{title}</span> {/* Size/Color title */}
       <div
-        className="flex flex-wrap justify-between gap-2"
+        className="flex flex-wrap gap-4"
         data-testid={dataTestId}
       >
-        {filteredOptions.map((v) => {
-          return (
-            <button
-              onClick={() => updateOption({ [option.id]: v })}
-              key={v}
-              className={clx(
-                "border-ui-border-base bg-ui-bg-subtle border text-small-regular h-10 rounded-rounded p-2 flex-1 ",
-                {
-                  "border-ui-border-interactive": v === current,
-                  "hover:shadow-elevation-card-rest transition-shadow ease-in-out duration-150":
-                    v !== current,
-                }
-              )}
-              disabled={disabled}
-              data-testid="option-button"
-            >
-              {v}
-            </button>
-          )
-        })}
+        {filteredOptions.map((v) => (
+          <button
+            onClick={() => updateOption({ [option.id]: v })}
+            key={v}
+            className={clx(
+              "h-10  flex-row items-center w-14 rounded-2xl justify-center transition-all duration-200 border text-small-regular focus:outline-none focus:ring-2 focus:ring-gray-900", // Square button
+              {
+                "border-black bg-white text-black hover:bg-gray-900 hover:text-white": v === current, // Active option
+                "border-gray-300 bg-gray-100 text-gray-600 hover:bg-white hover:border-black": v !== current, // Inactive option
+                "opacity-50 cursor-not-allowed": disabled, // Disabled state
+              }
+            )}
+            disabled={disabled}
+            data-testid="option-button"
+          >
+            {v}
+          </button>
+        ))}
       </div>
     </div>
+
+
   )
 }
 
