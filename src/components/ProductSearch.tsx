@@ -7,6 +7,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Loader2, Search } from "lucide-react";
 import { searchProducts } from "@/utils/searchProducts"
+import Image from "next/image"
 
 const ProductSearch = () => {
   const router = useRouter();
@@ -70,7 +71,7 @@ const ProductSearch = () => {
                 >
                   <div className="relative aspect-square">
                     {product.thumbnail ? (
-                      <img
+                      <Image
                         src={product.thumbnail}
                         alt={product.name}
                         className="w-full h-full object-cover"
