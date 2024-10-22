@@ -1,7 +1,7 @@
 import { Region } from "@medusajs/medusa"
 import { PricedProduct } from "@medusajs/medusa/dist/types/pricing"
 import React, { Suspense } from "react"
-import { Button } from "@/components/ui/button"
+import { Button } from "@medusajs/ui"
 import { Heading } from "@medusajs/ui"
 import {
   Accordion,
@@ -15,7 +15,6 @@ import ProductInfo from "@modules/products/templates/product-info"
 import SkeletonRelatedProducts from "@modules/skeletons/templates/skeleton-related-products"
 import { notFound } from "next/navigation"
 import ProductActionsWrapper from "./product-actions-wrapper"
-import { Heading1 } from "lucide-react"
 
 type ProductTemplateProps = {
   product: PricedProduct

@@ -4,13 +4,12 @@ import React, { useContext, createContext, useState, ReactNode } from "react";
 
 import { ArrowRightMini } from "@medusajs/icons";
 import { Region } from "@medusajs/medusa";
-import { Text, clx, useToggleState } from "@medusajs/ui";
+import { Text, clx, useToggleState, Button } from "@medusajs/ui";
 import LocalizedClientLink from "@modules/common/components/localized-client-link";
 import CountrySelect from "../country-select";
 
 import Link from "next/link"
 import { Bell, Package2, Home, ShoppingCart, Package, Users, Shirt, ShoppingBasket } from "lucide-react"
-import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 
 interface SidebarContextType {
@@ -39,10 +38,6 @@ const SideMenu = ({ regions }: { regions: Region[] | null, toggleSidebar?: () =>
                   {/* Brand Icon */}
                   <span className="">SEELOOK</span>
                 </Link>
-                <Button variant="outline" size="icon" className="ml-auto h-8 w-8">
-                  <Home className="h-4 w-4" />
-                  <span className="sr-only">Home</span>
-                </Button>
               </div>
 
 
@@ -94,7 +89,7 @@ const SideMenu = ({ regions }: { regions: Region[] | null, toggleSidebar?: () =>
                   </CardDescription>
                 </CardHeader>
                 <CardContent className="p-2 pt-0 md:p-4 md:pt-0 ">
-                  <Button size="sm" className="w-full hover:bg-emerald-600 hover:text-white" >
+                  <Button className="w-full hover:bg-emerald-600 hover:text-white" >
                     Whatsapp
                   </Button>
                   </CardContent>
