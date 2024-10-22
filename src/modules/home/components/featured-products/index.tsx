@@ -11,7 +11,7 @@ export default async function FeaturedProducts({
   region: Region
 }) {
   return collections.map((collection) => (
-    <li key={collection.id}>
+    <li key={collection.id} className="inline-block w-full">
       <ProductRail collection={collection} region={region} />
     </li>
   ))

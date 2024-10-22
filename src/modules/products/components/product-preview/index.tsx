@@ -104,18 +104,20 @@ const ProductPreview = async ({
 
 const ProductPreviewSkeleton = () => {
   return (
-    <Card className="overflow-hidden">
-      <div className="animate-pulse">
-        <div className="bg-muted aspect-square mb-3"></div>
-        <CardContent className="p-3">
-          <div className="h-4 bg-muted rounded w-3/4 mb-2"></div>
-          <div className="h-3 bg-muted rounded w-1/2"></div>
-        </CardContent>
-        <CardFooter className="p-3 pt-0">
-          <div className="h-6 bg-muted rounded w-full"></div>
-        </CardFooter>
-      </div>
-    </Card>
+    <div className="grid grid-cols-4 small:grid-cols-2 medium:grid-cols-3 gap-x-10 gap-y-8">
+      {Array.from({ length: 12 }).map((_, i) => (
+        <Card key={i} className="animate-pulse">
+          <div className="aspect-square bg-muted"></div>
+          <CardContent className="p-3">
+            <div className="h-4 w-2/3 bg-muted rounded mb-2"></div>
+            <div className="h-3 w-1/2 bg-muted rounded"></div>
+          </CardContent>
+          <CardFooter className="p-3 pt-0">
+            <div className="h-6 w-full bg-muted rounded"></div>
+          </CardFooter>
+        </Card>
+      ))}
+    </div>
   )
 }
 
