@@ -15,12 +15,12 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 interface SidebarContextType {
   expanded: boolean;
 }
-
-const SidebarContext = createContext<SidebarContextType>({ expanded: true });
-
-interface SidebarProps {
-  children: ReactNode;
-}
+//
+// const SidebarContext = createContext<SidebarContextType>({ expanded: true });
+//
+// interface SidebarProps {
+//   children: ReactNode;
+// }
 
 const SideMenu = ({ regions }: { regions: Region[] | null, toggleSidebar?: () => void }) => {
   const toggleState = useToggleState();
@@ -33,7 +33,7 @@ const SideMenu = ({ regions }: { regions: Region[] | null, toggleSidebar?: () =>
             <div>
               {/* Header */}
               <div className="flex h-14 items-center px-4 lg:h-[60px] lg:px-6">
-                <p className="flex items-center gap-2 font-semibold text-2xl text-sky-400 ">
+                <p className="flex items-center gap-2 font-semibold text-2xl text-blue-500 ">
                   {/*<Package2 className="h-6 w-6" />*/}
                   {/* Brand Icon */}
                   SEELOOK</p>
@@ -41,32 +41,32 @@ const SideMenu = ({ regions }: { regions: Region[] | null, toggleSidebar?: () =>
               </div>
 
               {/* Main content that takes up the remaining space */}
-              <div className="flex-1 overflow-auto">
+              <div className="flex-1 overflow-auto px-4">
                 <nav className="grid items-start px-2 py-5 text-sm space-y-2 lg:px-4">
                   <LocalizedClientLink
                     href="/store"
-                    className="flex items-center gap-3 rounded-lg px-8 py-4 text-base text-muted-foreground hover:text-sky-400 text-gray-700 hover:bg-blue-50 transition-colors"
+                    className="flex items-center gap-3 rounded-full px-6 py-4 text-base text-muted-foreground  hover:text-gray-50 text-gray-700 hover:bg-blue-500 transition-colors"
                   >
                     <Shirt className="h-6 w-6" />
                     Retail
                   </LocalizedClientLink>
                   <Link
                     href="/wholesale"
-                    className="flex items-center gap-3 rounded-lg px-8 py-4 text-base text-muted-foreground hover:text-sky-400 text-gray-700 hover:bg-blue-50 transition-colors"
+                    className="flex items-center gap-3 rounded-full px-6 py-4 text-base text-muted-foreground  hover:text-gray-50 text-gray-700 hover:bg-blue-500 transition-colors"
                   >
                     <ShoppingBasket className="h-6 w-6" />
                     Wholesale
                   </Link>
                   <Link
                     href="/store"
-                    className="flex items-center gap-3 rounded-lg px-8 py-4 text-base text-muted-foreground hover:text-sky-400 text-gray-700 hover:bg-blue-50 transition-colors"
+                    className="flex items-center gap-3 rounded-full  px-6 py-4 text-base text-muted-foreground  hover:text-gray-50 text-gray-700 hover:bg-blue-500 transition-colors"
                   >
                     <Package className="h-6 w-6" />
                     Collections
                   </Link>
 
                   <LocalizedClientLink
-                    className="flex items-center gap-3 rounded-lg px-8 py-4 text-base text-muted-foreground hover:text-sky-400 text-gray-700 hover:bg-blue-50 transition-colors"
+                    className="flex items-center gap-3 rounded-full px-6 py-4 text-base text-muted-foreground hover:text-gray-50 text-gray-700 hover:bg-blue-500 transition-colors"
                     href="/account"
                     data-testid="nav-account-link"
                   >
@@ -80,7 +80,7 @@ const SideMenu = ({ regions }: { regions: Region[] | null, toggleSidebar?: () =>
 
             {/* Bottom section */}
             <div className="bottom-0 mt-auto p-4">
-              <Card className={"hover:bg-sky-50 hover:shadow-lg"}>
+              <Card className={"hover:bg-gray-100 hover:shadow-lg"}>
                 <CardHeader className="p-2 pt-0 md:p-4">
                   <CardTitle>Contact us</CardTitle>
                   <CardDescription>

@@ -26,21 +26,21 @@ export default async function Nav() {
           <div className="flex items-center space-x-6 ml-auto">
             {/* Search Bar */}
             <div className="relative">
-              <Search className="absolute top-1/2 transform -translate-y-1/2 text-gray-400" />
+
               {process.env.FEATURE_SEARCH_ENABLED && (
                 <LocalizedClientLink
-                  className="pl-8 py-2 w-full items-center text-base text-muted-foreground hover:border-b-2 hover:border-gray-950 text-gray-700"
+                  className="pl-8 py-2 w-full items-center text-base text-muted-foreground  text-gray-700"
                   href="/search"
                   scroll={false}
                   data-testid="nav-search-link"
-                >
+                ><Search className="absolute top-1/2 transform -translate-y-1/2 text-gray-400" />
                 </LocalizedClientLink>
               )}
             </div>
 
               <LocalizedClientLink
                 href="/account/orders"
-                className="flex items-center py-1 text-base text-muted-foreground hover:border-b-2 hover:border-gray-950 text-gray-700"
+                className="flex items-center py-1 text-base text-muted-foreground  text-gray-700"
               >
                 <Shirt className="h-6 w-6 " />
               </LocalizedClientLink>
@@ -50,7 +50,7 @@ export default async function Nav() {
             <Suspense
               fallback={
                 <LocalizedClientLink
-                  className="flex items-center px-4 py-1 text-base text-muted-foreground hover:border-b-2 hover:border-gray-950 text-gray-700"
+                  className="flex items-center px-4 py-1 text-base text-muted-foreground  text-gray-700"
                   href="/cart"
                   data-testid="nav-cart-link"
                 >
@@ -58,7 +58,7 @@ export default async function Nav() {
                   Cart (0)
                 </LocalizedClientLink>
               }
-            ><div className={"flex items-center space-x-2 px-4 py-1 text-base text-muted-foreground hover:border-b-2 hover:border-gray-950 text-gray-700"}>
+            ><div className={"flex items-center space-x-2 px-4 py-1 text-base text-muted-foreground text-gray-700"}>
               <ShoppingCart className="h-6 w-6" />
               <CartButton />
             </div>
