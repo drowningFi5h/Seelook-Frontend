@@ -64,6 +64,7 @@ export async function createCart(data = {}) {
     })
 }
 
+
 export async function updateCart(cartId: string, data: StorePostCartsCartReq) {
   const headers = getMedusaHeaders(["cart"])
 

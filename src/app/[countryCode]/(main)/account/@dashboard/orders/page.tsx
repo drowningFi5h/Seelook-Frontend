@@ -1,5 +1,5 @@
 import { Metadata } from "next"
-
+import { authGuard } from '@/utils/auth-guard'
 import OrderOverview from "@modules/account/components/order-overview"
 import { listCustomerOrders } from "@lib/data"
 import { notFound } from "next/navigation"
@@ -10,8 +10,13 @@ export const metadata: Metadata = {
 }
 
 export default async function Orders() {
+  // Check authentication first
+  await authGuard()
+
+  // Use the cached listCustomerOrders with default pagination
   const orders = await listCustomerOrders()
 
+  // If orders is null or undefined (from medusaError), show 404
   if (!orders) {
     notFound()
   }

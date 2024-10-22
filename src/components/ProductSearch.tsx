@@ -1,40 +1,40 @@
-'use client';
+"use client"
 
-import React, { useState } from 'react';
-import { useRouter } from 'next/navigation';
-import Link from 'next/link';
-import { Card, CardContent } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
-import { Loader2, Search } from "lucide-react";
+import React, { useState } from "react"
+import { useRouter } from "next/navigation"
+import Link from "next/link"
+import { Card, CardContent } from "@/components/ui/card"
+import { Badge } from "@/components/ui/badge"
+import { Loader2, Search } from "lucide-react"
 import { searchProducts } from "@/utils/searchProducts"
 import Image from "next/image"
 
 const ProductSearch = () => {
   useRouter()
-  const [searchResults, setSearchResults] = useState<any[]>([]);
-  const [isLoading, setIsLoading] = useState(false);
+  const [searchResults, setSearchResults] = useState<any[]>([])
+  const [isLoading, setIsLoading] = useState(false)
 
   const handleSearch = async (query: string) => {
     if (query) {
-      setIsLoading(true);
+      setIsLoading(true)
       try {
-        const results = await searchProducts(query);
+        const results = await searchProducts(query)
         // console.log(results);
-        setSearchResults(results || []);
+        setSearchResults(results || [])
       } catch (error) {
-        console.error('Search error:', error);
-        setSearchResults([]);
+        console.error("Search error:", error)
+        setSearchResults([])
       } finally {
-        setIsLoading(false);
+        setIsLoading(false)
       }
     } else {
-      setSearchResults([]);
+      setSearchResults([])
     }
-  };
+  }
 
   const handleImageError = (e: React.SyntheticEvent<HTMLImageElement>) => {
-    e.currentTarget.src = '/api/placeholder/400/400';
-  };
+    e.currentTarget.src = "/api/placeholder/400/400"
+  }
 
   return (
     <div className="w-full max-w-4xl mx-auto px-4">
@@ -74,6 +74,8 @@ const ProductSearch = () => {
                       <Image
                         src={product.thumbnail}
                         alt={product.name}
+                        width={500} // Define width
+                        height={500} // Define height
                         className="w-full h-full object-cover"
                         onError={handleImageError}
                         loading="lazy"
@@ -86,13 +88,13 @@ const ProductSearch = () => {
                   </div>
                   <CardContent>
                     <h2 className="text-xl font-semibold mb-2 text-blue-600 hover:text-blue-800">
-                      {product.name || 'No name available'}
+                      {product.name || "No name available"}
                     </h2>
                     <p className="text-gray-600 mb-4">
-                      {product.description || 'No description available'}
+                      {product.description || "No description available"}
                     </p>
                     <p className="text-green-600 font-bold mb-2">
-                      Price: ${product.price || 'No price available'}
+                      Price: ${product.price || "No price available"}
                     </p>
                     <div className="flex flex-wrap gap-2">
                       {product.tags && product.tags.length > 0 ? (
@@ -117,7 +119,7 @@ const ProductSearch = () => {
         </div>
       )}
     </div>
-  );
-};
+  )
+}
 
-export default ProductSearch;
+export default ProductSearch

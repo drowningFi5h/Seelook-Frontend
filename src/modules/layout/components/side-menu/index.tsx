@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useContext, createContext, useState, ReactNode } from "react";
+import React, { createContext, useState, ReactNode } from "react";
 
 import { ArrowRightMini } from "@medusajs/icons";
 import { Region } from "@medusajs/medusa";
@@ -33,47 +33,46 @@ const SideMenu = ({ regions }: { regions: Region[] | null, toggleSidebar?: () =>
             <div>
               {/* Header */}
               <div className="flex h-14 items-center px-4 lg:h-[60px] lg:px-6">
-                <Link href="/" className="flex items-center gap-2 font-semibold text-2xl text-blue-600 hover:text-blue-400 ">
+                <p className="flex items-center gap-2 font-semibold text-2xl text-sky-400 ">
                   {/*<Package2 className="h-6 w-6" />*/}
                   {/* Brand Icon */}
-                  <span className="">SEELOOK</span>
-                </Link>
-              </div>
+                  SEELOOK</p>
 
+              </div>
 
               {/* Main content that takes up the remaining space */}
               <div className="flex-1 overflow-auto">
-                <nav className="grid items-start px-2 text-sm font-medium lg:px-4">
+                <nav className="grid items-start px-2 py-5 text-sm space-y-2 lg:px-4">
                   <LocalizedClientLink
                     href="/store"
-                    className="flex items-center gap-3 rounded-lg px-3 py-5 text-muted-foreground hover:text-primary hover:text-white border-t text-gray-700 hover:bg-blue-300 transition-colors"
+                    className="flex items-center gap-3 rounded-lg px-8 py-4 text-base text-muted-foreground hover:text-sky-400 text-gray-700 hover:bg-blue-50 transition-colors"
                   >
-                    <Shirt className="h-4 w-4" />
+                    <Shirt className="h-6 w-6" />
                     Retail
                   </LocalizedClientLink>
                   <Link
                     href="/wholesale"
-                    className="flex items-center gap-3 rounded-lg px-3 py-5 text-muted-foreground hover:text-primary hover:text-white border-t text-gray-700 hover:bg-blue-300 transition-colors"
+                    className="flex items-center gap-3 rounded-lg px-8 py-4 text-base text-muted-foreground hover:text-sky-400 text-gray-700 hover:bg-blue-50 transition-colors"
                   >
-                    <ShoppingBasket className="h-4 w-4" />
+                    <ShoppingBasket className="h-6 w-6" />
                     Wholesale
                   </Link>
                   <Link
                     href="/store"
-                    className="flex items-center gap-3 rounded-lg bg-muted px-3 py-5 text-primar hover:text-primary hover:text-white border-t text-gray-700 hover:bg-blue-300 transition-colors"
+                    className="flex items-center gap-3 rounded-lg px-8 py-4 text-base text-muted-foreground hover:text-sky-400 text-gray-700 hover:bg-blue-50 transition-colors"
                   >
-                    <Package className="h-4 w-4" />
+                    <Package className="h-6 w-6" />
                     Collections
                   </Link>
 
                   <LocalizedClientLink
-                    className="flex items-center gap-3 rounded-lg px-3 py-5 text-muted-foreground hover:text-primary hover:text-white border-t text-gray-700 hover:bg-blue-300 transition-colors"
+                    className="flex items-center gap-3 rounded-lg px-8 py-4 text-base text-muted-foreground hover:text-sky-400 text-gray-700 hover:bg-blue-50 transition-colors"
                     href="/account"
                     data-testid="nav-account-link"
                   >
                     <span className="sr-only">Account</span>
                     <Users className="h-6 w-6" />
-                    <p className="text-sm">My Account</p>
+                    <p className="">My Account</p>
                   </LocalizedClientLink>
                 </nav>
               </div>
@@ -81,7 +80,7 @@ const SideMenu = ({ regions }: { regions: Region[] | null, toggleSidebar?: () =>
 
             {/* Bottom section */}
             <div className="bottom-0 mt-auto p-4">
-              <Card>
+              <Card className={"hover:bg-sky-50 hover:shadow-lg"}>
                 <CardHeader className="p-2 pt-0 md:p-4">
                   <CardTitle>Contact us</CardTitle>
                   <CardDescription>
