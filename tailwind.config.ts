@@ -98,6 +98,9 @@ const config: Config = {
 			],
 		},
 		extend: {
+			fontFamily: {
+				sans: ['Inter', 'sans-serif'],
+			},
 			colors: {
 				"red-1": "#FF0000",
 				"grey-1": "#F7F7F7",
