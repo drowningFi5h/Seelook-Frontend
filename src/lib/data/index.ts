@@ -64,6 +64,7 @@ export async function createCart(data = {}) {
     })
 }
 
+
 export async function updateCart(cartId: string, data: StorePostCartsCartReq) {
   const headers = getMedusaHeaders(["cart"])
 
@@ -440,7 +441,6 @@ export const getProductByHandle = cache(async function (
     .catch((err) => {
       throw err
     })
-
   return { product }
 })
 

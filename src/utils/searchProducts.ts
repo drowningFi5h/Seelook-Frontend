@@ -6,7 +6,8 @@ interface SearchResponseHit {
   description: string;
   price: number;
   tags: string[];
-  thumbnail: string; // Add thumbnail to the interface
+  handle: string;
+  thumbnail: string;
 }
 
 interface SearchResponse {
@@ -24,13 +25,12 @@ export const searchProducts = async (query: string): Promise<SearchResponseHit[]
       });
 
     // Log the raw searchResults to see what’s coming from the API
-    console.log('Search Results:', searchResults);
+    // console.log('Search Results from search:', searchResults);
 
     if (!searchResults || !searchResults.hits) {
       console.warn('No hits in search results');
       return [];
     }
-
     // Map through the hits to extract relevant product information including thumbnail
     return searchResults.hits.map((hit: any) => ({
       id: hit.document.id,
@@ -38,6 +38,7 @@ export const searchProducts = async (query: string): Promise<SearchResponseHit[]
       description: hit.document.description,
       price: hit.document.price,
       tags: hit.document.tags,
+      handle: hit.document.handle,
       thumbnail: hit.document.thumbnail || '', // Handle missing thumbnails
     }));
   } catch (error) {

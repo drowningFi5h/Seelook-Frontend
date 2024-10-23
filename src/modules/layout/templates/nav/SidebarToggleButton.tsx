@@ -3,7 +3,7 @@
 import React, { useState } from "react";
 import { Home, Menu, Package, Shirt, ShoppingBasket, Users } from "lucide-react"
 import Link from "next/link"
-import { Button } from "@/components/ui/button"
+import { Button } from "@medusajs/ui"
 import LocalizedClientLink from "@modules/common/components/localized-client-link"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import CountrySelect from "@modules/layout/components/country-select"
@@ -95,7 +95,7 @@ const SidebarToggleButton = ({ regions }: { regions: Region[] | null, toggleSide
                       </CardDescription>
                     </CardHeader>
                     <CardContent className="p-2 pt-0 md:p-4 md:pt-0">
-                      <Button size="sm" className="w-full hover:bg-emerald-600 hover:text-white" >
+                      <Button className="w-full hover:bg-emerald-600 hover:text-white" >
                         Whatsapp
                       </Button>
                     </CardContent>

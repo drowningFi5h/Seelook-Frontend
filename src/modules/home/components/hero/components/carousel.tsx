@@ -9,34 +9,20 @@ import { cn } from '@lib/utils';
 interface Item {
     header: string;
     description: string;
-    bg: string;
+    bg: string[];
     imgUrl: string;
 }
 
 const Item = (props: { item: Item }) => {
-    
-    var header = props.item.header.split("\n")
-
-    // if(isMobile) {
-    //     return (
-    //         <div className={cn("absolute right-0 left-0 bottom-0 top-0 flex flex-row")} style={{backgroundColor: props.item.bg}}>
-    //           <div className="relative h-full">
-    //             <Image src={props.item.imgUrl} alt="hero" layout='fill' className='pt-14 w-auto min-w-fit h-auto min-h-fit' priority/>
-    //           </div>
-    //           <div className="flex flex-col justify-end items-center p-10 w-[40em]">
-    //             <Button variant='contained' className='mt-16 rounded-none w-fit py-4 px-8 bg-black text-white text-md !text-opacity-80 normal-case'>Shop Now</Button>
-    //           </div>
-    //         </div>
-    //     )
-    // }
-
+    const header = props.item.header.split("\n");
+    const bgColor = props.item.bg[0];
 
     return (
-        <div className={cn("absolute right-0 left-0 bottom-0 top-0 flex flex-row")} style={{backgroundColor: props.item.bg}}>
-            <div className="relative w-[50vw] h-full ">
-                <Image src={props.item.imgUrl+'.svg'} alt="hero" layout='fill' className='pt-14 w-auto min-w-fit h-auto min-h-fit' priority={false}  placeholder="blur"  blurDataURL={props.item.imgUrl+'.png'}/>
+        <div className={cn("absolute right-0 left-0 bottom-0 top-0 flex flex-row items-center justify-center")} style={{backgroundColor: bgColor }}>
+            <div className="md:relative absolute flex inset-0 justify-center w-full md:w-[50vw] h-full ">
+                <Image src={props.item.imgUrl+'.svg'} alt="hero" height={100} width={100} className='inset-0 w-full h-full pt-14 w-auto min-w-fit h-auto min-h-fit' priority={false}  placeholder="blur"  blurDataURL={props.item.imgUrl+'.png'}/>
             </div>
-            <div className="flex flex-col justify-center text-left pr-12 z-10 w-[40em]">
+            <div className="flex flex-col md:justify-center justify-end items-center h-full md:items-start md:text-left py-10 md:pr-12 z-10 w-[40em]">
               <h2 className="hidden md:block max-w-[55vw] text-[3.075em] leading-[3.7rem]  libre-baskerville-bold pb-6 ">{header.map((text, i) => <span key={i} className="block">{text}</span>)}</h2>
               <p className="hidden md:block max-w-[55vw] leading-[1.8rem] text-[1.125em] font-sans text-3xl">{props.item.description}</p>
               <Button variant='contained' className='mt-16 rounded-none w-fit py-4 px-8 bg-black text-white text-md !text-opacity-80 normal-case'>Shop Now</Button>
