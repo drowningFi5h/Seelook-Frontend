@@ -33,10 +33,12 @@ const SideMenu = ({ regions }: { regions: Region[] | null, toggleSidebar?: () =>
             <div>
               {/* Header */}
               <div className="flex h-14 items-center px-4 lg:h-[60px] lg:px-6">
-                <p className="flex items-center gap-2 font-semibold text-2xl text-blue-500 ">
+                <LocalizedClientLink
+                  href={"/"}
+                  className="flex items-center gap-2 font-semibold text-2xl text-blue-500 ">
                   {/*<Package2 className="h-6 w-6" />*/}
                   {/* Brand Icon */}
-                  SEELOOK</p>
+                  SEELOOK</LocalizedClientLink>
 
               </div>
 
