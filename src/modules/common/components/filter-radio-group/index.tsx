@@ -14,24 +14,27 @@ type FilterRadioGroupProps = {
 }
 
 const FilterRadioGroup = ({
-  title,
-  items,
-  value,
-  handleChange,
-  'data-testid': dataTestId
-}: FilterRadioGroupProps) => {
+                            title,
+                            items,
+                            value,
+                            handleChange,
+                            'data-testid': dataTestId
+                          }: FilterRadioGroupProps) => {
   return (
-    <div className="flex gap-x-3 flex-col gap-y-3">
-      <Text className="txt-compact-small-plus text-ui-fg-muted">{title}</Text>
-      <RadioGroup data-testid={dataTestId}>
+    <div className="flex flex-col space-y-4">
+      <Text className="text-sm font-medium text-ui-fg-base">{title}</Text>
+      <RadioGroup className="space-y-2" data-testid={dataTestId}>
         {items?.map((i) => (
           <div
             key={i.value}
-            className={clx("flex gap-x-2 items-center", {
-              "ml-[-1.75rem]": i.value === value,
-            })}
+            className={clx(
+              "group flex items-center transition-all duration-200",
+              "hover:bg-ui-bg-base-hover rounded-md",
+              {
+                "bg-ui-bg-base-pressed": i.value === value,
+              }
+            )}
           >
-            {i.value === value && <EllipseMiniSolid />}
             <RadioGroup.Item
               checked={i.value === value}
               onClick={(e) =>
@@ -47,14 +50,30 @@ const FilterRadioGroup = ({
             <Label
               htmlFor={i.value}
               className={clx(
-                "!txt-compact-small !transform-none text-ui-fg-subtle hover:cursor-pointer",
+                "flex items-center w-full px-3 py-2 cursor-pointer",
+                "text-sm transition-colors duration-200",
                 {
-                  "text-ui-fg-base": i.value === value,
+                  "text-ui-fg-base font-medium": i.value === value,
+                  "text-ui-fg-subtle": i.value !== value,
                 }
               )}
               data-testid="radio-label"
               data-active={i.value === value}
             >
+              <span className={clx(
+                "w-4 h-4 mr-3 rounded-full border transition-all duration-200",
+                "flex items-center justify-center",
+                {
+                  "border-ui-border-base group-hover:border-ui-border-hover": i.value !== value,
+                  "border-ui-border-interactive bg-ui-bg-interactive": i.value === value,
+                }
+              )}>
+                {i.value === value && (
+                  <span className="w-2 h-2 rounded-full bg-ui-fg-on-color" />
+                )}
+              </span>
+
+
               {i.label}
             </Label>
           </div>
