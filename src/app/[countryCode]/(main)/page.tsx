@@ -72,9 +72,7 @@ export default async function Home({
       <Hero />
 
         <div className="w-full mx-auto ">
-          <div className="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-3 gap-6 ">
             <FeaturedProducts collections={collections} region={region} />
-          </div>
         </div>
 
     </>

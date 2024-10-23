@@ -36,15 +36,10 @@ const PreviewCard = ({
             thumbnail={productPreview.thumbnail}
             size="full"
           />
-          {isFeatured && (
-            <Badge variant="secondary" className="absolute top-2 left-2">
-              Featured
-            </Badge>
-          )}
         </div>
         <CardContent className="p-3">
           <Text
-            className="text-sm font-semibold line-clamp-2 group-hover:text-primary transition-colors duration-200"
+            className="text-base line-clamp-2 group-hover:text-primary transition-colors duration-200"
             data-testid="product-title"
           >
             {productPreview.title}
@@ -54,9 +49,6 @@ const PreviewCard = ({
           {price && (
             <div className="flex items-center justify-between w-full">
               <PreviewPrice price={price} />
-              <Badge variant="outline" className="text-xs group-hover:bg-primary group-hover:text-primary-foreground transition-colors duration-200">
-                View
-              </Badge>
             </div>
           )}
         </CardFooter>
