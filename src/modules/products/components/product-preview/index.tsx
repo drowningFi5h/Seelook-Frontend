@@ -9,7 +9,6 @@ import Thumbnail from "../thumbnail"
 import PreviewPrice from "./price"
 import { Suspense } from "react"
 import { Card, CardContent, CardFooter } from "@/components/ui/card"
-import { Badge } from "@/components/ui/badge"
 
 interface PreviewCardProps {
   productPreview: ProductPreviewType
@@ -20,7 +19,6 @@ interface PreviewCardProps {
 
 const PreviewCard = ({
                        productPreview,
-                       isFeatured,
                        price,
                        className = ""
                      }: PreviewCardProps) => {

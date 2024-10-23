@@ -6,7 +6,6 @@ import FeaturedProducts from "@modules/home/components/featured-products"
 import Hero from "@modules/home/components/hero"
 import { ProductCollectionWithPreviews } from "types/global"
 import { cache } from "react"
-import ProductCollectionGrid from "@modules/products/components/ProductCollectionGrid"
 
 export const metadata: Metadata = {
   title: "FashionFlow E-commerce",
