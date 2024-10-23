@@ -21,17 +21,17 @@ export default function Footer() {
             <div>
               <h3 className="text-lg font-semibold mb-4">About Us</h3>
               <ul className="space-y-2">
-                <li><Link href="/mission" className="hover:underline">Mission</Link></li>
-                <li><Link href="/team" className="hover:underline">Team</Link></li>
-                <li><Link href="/newsletter" className="hover:underline">Newsletter</Link></li>
+                <li><Link href="#" className="hover:underline">Mission</Link></li>
+                <li><Link href="#" className="hover:underline">Team</Link></li>
+                <li><Link href="/#" className="hover:underline">Newsletter</Link></li>
               </ul>
             </div>
             <div>
               <h3 className="text-lg font-semibold mb-4">Support</h3>
               <ul className="space-y-2">
-                <li><Link href="/contact" className="hover:underline">Contact</Link></li>
-                <li><Link href="/refund-policy" className="hover:underline">Refund Policy</Link></li>
-                <li><Link href="/faq" className="hover:underline">FAQ's</Link></li>
+                <li><Link href="#" className="hover:underline">Contact</Link></li>
+                <li><Link href="#" className="hover:underline">Refund Policy</Link></li>
+                <li><Link href="#" className="hover:underline">FAQ&#39;s</Link></li>
               </ul>
             </div>
             <div>
@@ -47,7 +47,7 @@ export default function Footer() {
         <div className="border-t border-gray-800/20 pt-8 flex flex-col md:flex-row justify-between items-center">
           <p className="text-sm mb-4 md:mb-0">&copy; {new Date().getFullYear()} Your Store. All rights reserved.</p>
           <div className="flex space-x-4 text-sm">
-            <Link href="/terms" className="hover:underline">Terms of Service</Link>
+            <Link href="#" className="hover:underline">Terms of Service</Link>
           </div>
         </div>
       </div>
