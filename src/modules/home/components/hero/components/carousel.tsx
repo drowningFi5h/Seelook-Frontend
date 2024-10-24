@@ -19,8 +19,8 @@ const Item = (props: { item: Item }) => {
 
     return (
         <div className={cn("absolute right-0 left-0 bottom-0 top-0 flex flex-row items-center justify-center")} style={{backgroundColor: bgColor }}>
-            <div className="md:relative absolute flex inset-0 justify-center w-full md:w-[50vw] h-full ">
-                <Image src={props.item.imgUrl+'.svg'} alt="hero" height={100} width={100} className='inset-0 w-full h-full pt-14 w-auto min-w-fit h-auto min-h-fit' priority={false}  placeholder="blur"  blurDataURL={props.item.imgUrl+'.png'}/>
+            <div className="md:relative absolute flex inset-0 justify-center w-full  h-full md:w-[50vw] overflow-visible">
+                <Image src={props.item.imgUrl+'.svg'} alt="hero" height={100} width={100} className='h-full pt-14 w-auto min-w-fit h-auto min-h-fit' priority={false}  placeholder="blur"  blurDataURL={props.item.imgUrl+'.png'}/>
             </div>
             <div className="flex flex-col md:justify-center justify-end items-center h-full md:items-start md:text-left py-10 md:pr-12 z-10 w-[40em]">
               <h2 className="hidden md:block max-w-[55vw] text-[3.075em] leading-[3.7rem]  libre-baskerville-bold pb-6 ">{header.map((text, i) => <span key={i} className="block">{text}</span>)}</h2>

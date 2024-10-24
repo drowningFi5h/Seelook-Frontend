@@ -4,26 +4,24 @@ import { Button, Heading } from "@medusajs/ui"
 import Carousel from 'react-material-ui-carousel';
 import { Item, CustomNavButton } from "./components/carousel"
 
-const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
-
 var items = [
   {
     header: "Elevating\n Women's Style",
     description: "Discover a world of fashion where quality, style, and affordability converge. Explore our curated collection of women's clothing, designed to empower you to express your unique sense of self.",
     bg: ['#DDDDDD', '#B24592','#F15F79'],
-    imgUrl: baseUrl + "/in/images/hero1"
+    imgUrl: "/in/images/hero1"
   },
   {
     header: "Elevating\n Women's Style",
     description: "Discover a world of fashion where quality, style, and affordability converge. Explore our curated collection of women's clothing, designed to empower you to express your unique sense of self.",
     bg: ['#DDDDDD'],
-    imgUrl: baseUrl + "/in/images/hero2"
+    imgUrl: "/in/images/hero2"
   },
   {
     header: "Bigg Billion\n Days",
     description: "Discover a world of fashion where quality, style, and affordability converge. Explore our curated collection of women's clothing, designed to empower you to express your unique sense of self.",
     bg: ['#DDDDDD'],
-    imgUrl: baseUrl + "/in/images/hero3"
+    imgUrl: "/in/images/hero3"
   },
 ]
 

@@ -1,6 +1,7 @@
 "use client";
 
-import React, { createContext, useState, ReactNode } from "react";
+import React, { createContext, useState, ReactNode, Suspense } from "react";
+import Image from "next/image";
 
 import { ArrowRightMini } from "@medusajs/icons";
 import { Region } from "@medusajs/medusa";
@@ -11,6 +12,7 @@ import CountrySelect from "../country-select";
 import Link from "next/link"
 import { Bell, Package2, Home, ShoppingCart, Package, Users, Shirt, ShoppingBasket } from "lucide-react"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
+import { Skeleton } from "@/components/ui/skeleton"
 
 interface SidebarContextType {
   expanded: boolean;
@@ -31,13 +33,13 @@ const SideMenu = ({ regions }: { regions: Region[] | null, toggleSidebar?: () =>
         <div className="hidden h-screen bg-muted/40 md:block ">
           <div className="flex h-full flex-col justify-between ">
             <div>
-              {/* Header */}
-              <div className="flex h-14 items-center px-4 lg:h-[60px] lg:px-6">
-                <p className="flex items-center gap-2 font-semibold text-2xl text-blue-500 ">
-                  {/*<Package2 className="h-6 w-6" />*/}
-                  {/* Brand Icon */}
-                  SEELOOK</p>
-
+              <div className="relative flex flex-row items-center h-14 items-center mt-6 lg:h-[60px] lg:px-6 ">
+                <div className="relative w-auto h-full inset-0 p-2">
+                  <Suspense fallback={<Skeleton className="h-full bg-red-500 aspect-square" />}>
+                    <Image src="/in/images/logo.svg" alt="logo" width={100} height={100} className="w-auto h-full" loading="lazy"/>
+                  </Suspense>
+                </div>
+                <p className="flex items-center gap-2 font-semibold text-2xl text-primary ">SEELOOK</p>
               </div>
 
               {/* Main content that takes up the remaining space */}
