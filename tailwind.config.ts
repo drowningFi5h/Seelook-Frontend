@@ -122,6 +122,13 @@ const config: Config = {
 			},
 		},
 	},
+//enable for Medusa UI
+	// modules:[{
+	// 	corePlugins: {
+	// 		preflight: false
+	// 	},
+	// }
+	// ],
 	plugins: [
 		require("tailwind-scrollbar-hide"),
 		plugin(function ({ addBase }) {

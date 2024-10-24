@@ -21,9 +21,11 @@ const Summary = ({ cart }: SummaryProps) => {
       <DiscountCode cart={cart} />
       <Divider />
       <CartTotals data={cart} />
+      <div className={"flex justify-center h-16 "}>
       <LocalizedClientLink href={"/checkout?step=" + cart.checkout_step} data-testid="checkout-button">
-        <Button className="w-full h-10">Go to checkout</Button>
+        <Button className="w-56 h-10 hover:bg-gray-800 hover:text-white text-base text-body-semibold">Proceed to Ckeckout</Button>
       </LocalizedClientLink>
+      </div>
     </div>
   )
 }
