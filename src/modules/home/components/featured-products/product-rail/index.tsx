@@ -18,9 +18,9 @@ export default function ProductRail({
   }
 
   return (
-    <div className=" w-[80vw] ">
+    <div className=" py-10 ">
       <div className="flex justify-between mb-8">
-        <Text className="txt-xlarge">{collection.title}</Text>
+        <Text className="text-2xl">{collection.title}</Text>
         <InteractiveLink href={`/collections/${collection.handle}`}>
           View all
         </InteractiveLink>

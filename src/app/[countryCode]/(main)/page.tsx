@@ -6,7 +6,6 @@ import FeaturedProducts from "@modules/home/components/featured-products"
 import Hero from "@modules/home/components/hero"
 import { ProductCollectionWithPreviews } from "types/global"
 import { cache } from "react"
-import ProductCollectionGrid from "@modules/products/components/ProductCollectionGrid"
 
 export const metadata: Metadata = {
   title: "FashionFlow E-commerce",
@@ -72,9 +71,7 @@ export default async function Home({
       <Hero />
 
         <div className="w-full mx-auto ">
-          <div className="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-3 gap-6 ">
             <FeaturedProducts collections={collections} region={region} />
-          </div>
         </div>
 
     </>

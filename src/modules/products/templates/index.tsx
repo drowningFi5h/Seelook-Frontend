@@ -1,8 +1,7 @@
 import { Region } from "@medusajs/medusa"
 import { PricedProduct } from "@medusajs/medusa/dist/types/pricing"
 import React, { Suspense } from "react"
-import { Button } from "@medusajs/ui"
-import { Heading } from "@medusajs/ui"
+import { Button, Heading } from "@medusajs/ui"
 import {
   Accordion,
   AccordionContent,
@@ -15,6 +14,7 @@ import ProductInfo from "@modules/products/templates/product-info"
 import SkeletonRelatedProducts from "@modules/skeletons/templates/skeleton-related-products"
 import { notFound } from "next/navigation"
 import ProductActionsWrapper from "./product-actions-wrapper"
+import GstVerificationForm from "@/components/GstVerificationForm" // Import the form
 
 type ProductTemplateProps = {
   product: PricedProduct
@@ -31,6 +31,9 @@ const ProductTemplate: React.FC<ProductTemplateProps> = ({
     return notFound()
   }
 
+  // Safely check if the product tags exist and if the product is tagged as "wholesale"
+  const isWholesale = product.tags?.some(tag => tag.value === "wholesale") ?? false
+
   return (
     <div className="min-h-screen bg-white">
       <main className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -38,7 +41,7 @@ const ProductTemplate: React.FC<ProductTemplateProps> = ({
         <div className="flex flex-col md:flex-row gap-12 py-12">
           {/* Left side - Image Gallery */}
           <div className="md:w-[60%]">
-              <ImageGallery images={product?.images || []} />
+            <ImageGallery images={product?.images || []} />
           </div>
 
           {/* Right side - Product Info */}
@@ -48,7 +51,7 @@ const ProductTemplate: React.FC<ProductTemplateProps> = ({
             </div>
 
             {/* Product details accordion */}
-            <Accordion type="single" collapsible className="w-full ">
+            <Accordion type="single" collapsible className="w-full">
               <AccordionItem value="description">
                 <AccordionTrigger className="text-gray-800">Product Description</AccordionTrigger>
                 <AccordionContent className="text-gray-600">
@@ -69,6 +72,14 @@ const ProductTemplate: React.FC<ProductTemplateProps> = ({
                 <ProductActionsWrapper id={product.id} region={region} />
               </Suspense>
             </div>
+
+            {/* GST Verification Form for Wholesale Products */}
+            {isWholesale && (
+              <div className="mt-6 p-8 border-t-2 border-gray-200 space-y-8">
+                <h3 className="text-xl text-gray-800">Wholesale Purchase</h3>
+                <GstVerificationForm />
+              </div>
+            )}
           </div>
         </div>
 

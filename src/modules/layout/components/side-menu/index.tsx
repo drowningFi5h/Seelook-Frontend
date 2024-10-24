@@ -39,7 +39,9 @@ const SideMenu = ({ regions }: { regions: Region[] | null, toggleSidebar?: () =>
                     <Image src="/in/images/logo.svg" alt="logo" width={100} height={100} className="w-auto h-full" loading="lazy"/>
                   </Suspense>
                 </div>
+              <LocalizedClientLink href={"/"} className="flex items-center gap-2 font-semibold text-2xl text-blue-500 ">
                 <p className="flex items-center gap-2 font-semibold text-2xl text-primary ">SEELOOK</p>
+              </LocalizedClientLink>
               </div>
 
               {/* Main content that takes up the remaining space */}
