@@ -105,6 +105,13 @@ const config: Config = {
 				"red-1": "#FF0000",
 				"grey-1": "#F7F7F7",
 				"grey-2": "#8A8A8A",
+				primary: {
+					DEFAULT: "var(--primary)",
+					foreground: "var(--primary-foreground)",
+				},
+				skeleton: {
+					DEFAULT: "hsl(var(--skeleton))",
+				}
 			},
 			keyframes: {
 				"accordion-down": {

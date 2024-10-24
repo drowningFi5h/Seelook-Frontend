@@ -4,6 +4,36 @@
 @tailwind components;
 @tailwind utilities;
 
+/* root color variable */
+@layer base {
+  :root {
+    --primary: #B9007F;
+    --primary-foreground: #fd70d1;
+    --skeleton: 0, 0%, 87%;
+  }
+}
+
+input, button, textarea, select {
+  font: inherit;
+}
+
+::-webkit-scrollbar {
+  height: 5px;
+  width: 5px;
+  background: var(--primary-color);
+  -webkit-border-radius: 1ex;
+}
+
+::-webkit-scrollbar-thumb {
+  background: white;
+  -webkit-border-radius: 1ex;
+}
+
+::-webkit-scrollbar-corner {
+  background: #fff3;
+}
+
+
 .libre-baskerville-regular {
   font-family: "Libre Baskerville", serif;
   font-weight: 400;
