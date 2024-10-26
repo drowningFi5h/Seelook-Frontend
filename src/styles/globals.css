@@ -8,7 +8,7 @@
 @layer base {
   :root {
     --primary: #B9007F;
-    --primary-foreground: #fd70d1;
+    --primary-foreground: #f8d7ee;
     --skeleton: 0, 0%, 87%;
   }
 }
