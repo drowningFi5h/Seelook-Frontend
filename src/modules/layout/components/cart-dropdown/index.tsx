@@ -1,5 +1,4 @@
 "use client"
-
 import { Popover, Transition } from "@headlessui/react"
 import { Cart } from "@medusajs/medusa"
 import { Button } from "@medusajs/ui"
@@ -12,6 +11,9 @@ import LineItemOptions from "@modules/common/components/line-item-options"
 import LineItemPrice from "@modules/common/components/line-item-price"
 import LocalizedClientLink from "@modules/common/components/localized-client-link"
 import Thumbnail from "@modules/products/components/thumbnail"
+
+import Badge from '@mui/material/Badge';
+import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 
 const CartDropdown = ({
                         cart: cartState,
@@ -81,7 +83,11 @@ const CartDropdown = ({
             className="hover:text-ui-fg-base"
             href="/cart"
             data-testid="nav-cart-link"
-          >{`Cart (${totalItems})`}</LocalizedClientLink>
+          >
+              <Badge badgeContent={totalItems || 0} max={99} showZero color="secondary" className="relative top-2 right-2">
+                  <ShoppingCartIcon className="h-11 w-11 p-2 hover:bg-[#000000]/5 relative -top-2 -right-2 rounded-full" />
+              </Badge>
+          </LocalizedClientLink>
         </Popover.Button>
         <Transition
           show={cartDropdownOpen}

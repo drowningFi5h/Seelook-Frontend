@@ -25,7 +25,7 @@ const Item = (props: { item: Item }) => {
             <div className="flex flex-col md:justify-center justify-end items-center h-full md:items-start md:text-left py-10 md:pr-12 z-10 w-[40em]">
               <h2 className="hidden md:block max-w-[55vw] text-[3.075em] leading-[3.7rem]  libre-baskerville-bold pb-6 ">{header.map((text, i) => <span key={i} className="block">{text}</span>)}</h2>
               <p className="hidden md:block max-w-[55vw] leading-[1.8rem] text-[1.125em] font-sans text-3xl">{props.item.description}</p>
-              <Button variant='contained' className='mt-16 rounded-none w-fit py-4 px-8 bg-black text-white text-md !text-opacity-80 normal-case'>Shop Now</Button>
+              <Button variant='contained' className='mt-16 rounded-none w-fit py-4 px-8 bg-black text-white text-md !text-opacity-80 normal-case bg-primary'>Shop Now</Button>
             </div>
         </div>
     )

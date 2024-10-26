@@ -13,6 +13,7 @@ export const metadata: Metadata = {
 
 export default async function PageLayout({ children }: { children: React.ReactNode }) {
   const regions = await listRegions();
+  // const regions = await listRegions().then((regions) => regions);
 
   return (
     <div className="relative flex min-h-screen w-full bg-mint-100">
@@ -26,7 +27,7 @@ export default async function PageLayout({ children }: { children: React.ReactNo
 
       {/* Main content area */}
       <div className="flex-1 flex-col transition-all duration-300 md:ml-64">
-        <Nav />
+        <Nav regions={regions}/>
         <main className="min-h-screen p-6">{children}</main>
         <Footer />
       </div>

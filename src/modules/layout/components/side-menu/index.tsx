@@ -1,7 +1,8 @@
 "use client";
 
-import React, { createContext, useState, ReactNode, Suspense } from "react";
+import React, { createContext, useState, ReactNode, Suspense, use } from "react";
 import Image from "next/image";
+import { usePathname, useSearchParams } from "next/navigation";
 
 import { ArrowRightMini } from "@medusajs/icons";
 import { Region } from "@medusajs/medusa";
@@ -13,6 +14,7 @@ import Link from "next/link"
 import { Bell, Package2, Home, ShoppingCart, Package, Users, Shirt, ShoppingBasket } from "lucide-react"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Skeleton } from "@/components/ui/skeleton"
+import { cn } from "@/lib/utils"
 
 interface SidebarContextType {
   expanded: boolean;
@@ -27,6 +29,15 @@ interface SidebarContextType {
 const SideMenu = ({ regions }: { regions: Region[] | null, toggleSidebar?: () => void }) => {
   const toggleState = useToggleState();
   const [expanded, setExpanded] = useState<boolean>(true);
+  
+  const searchParams = useSearchParams();
+  const category = searchParams.get('category');
+  const pathname = usePathname();
+
+  const region = regions?.at(0)?.countries.at(0)?.iso_2;
+  // const region = regions[0].countries.find((c) => {return c.iso_2});
+  // console.log(region);
+
   return (
     <>
       <aside>
@@ -46,31 +57,31 @@ const SideMenu = ({ regions }: { regions: Region[] | null, toggleSidebar?: () =>
 
               {/* Main content that takes up the remaining space */}
               <div className="flex-1 overflow-auto px-4">
-                <nav className="grid items-start px-2 py-5 text-sm space-y-2 lg:px-4">
+                <nav className="grid items-start px-2 py-5 text-sm space-y-4 lg:px-4">
                   <LocalizedClientLink
-                    href="/store"
-                    className="flex items-center gap-3 rounded-full px-6 py-4 text-base text-muted-foreground  hover:text-gray-50 text-gray-700 hover:bg-blue-500 transition-colors"
+                    href="/store?category=home"
+                    className={cn("flex items-center gap-3 rounded-[10px] px-6 py-4 text-base text-muted-foreground font-bold hover:text-gray-50 text-gray-700 hover:bg-primary transition-colors", (pathname.startsWith(`/${region}/store`) && category=='home')?"bg-primary-foreground text-black":'')}
                   >
                     <Shirt className="h-6 w-6" />
                     Retail
                   </LocalizedClientLink>
                   <Link
                     href="/wholesale"
-                    className="flex items-center gap-3 rounded-full px-6 py-4 text-base text-muted-foreground  hover:text-gray-50 text-gray-700 hover:bg-blue-500 transition-colors"
+                    className={cn("flex items-center gap-3 rounded-[10px] px-6 py-4 text-base text-muted-foreground font-bold hover:text-gray-50 text-gray-700 hover:bg-primary transition-colors", pathname.startsWith(`/${region}/wholesale`)?"bg-primary-foreground text-black":'')}
                   >
                     <ShoppingBasket className="h-6 w-6" />
                     Wholesale
                   </Link>
                   <Link
-                    href="/store"
-                    className="flex items-center gap-3 rounded-full  px-6 py-4 text-base text-muted-foreground  hover:text-gray-50 text-gray-700 hover:bg-blue-500 transition-colors"
+                    href="/store?category=collections"
+                    className={cn("flex items-center gap-3 rounded-[10px] px-6 py-4 text-base text-muted-foreground font-bold hover:text-gray-50 text-gray-700 hover:bg-primary transition-colors", (pathname.startsWith(`/${region}/store`) && category=='collections')?"bg-primary-foreground text-black":'')}
                   >
                     <Package className="h-6 w-6" />
                     Collections
                   </Link>
 
                   <LocalizedClientLink
-                    className="flex items-center gap-3 rounded-full px-6 py-4 text-base text-muted-foreground hover:text-gray-50 text-gray-700 hover:bg-blue-500 transition-colors"
+                    className={cn("flex items-center gap-3 rounded-[10px] px-6 py-4 text-base text-muted-foreground font-bold hover:text-gray-50 text-gray-700 hover:bg-primary transition-colors", pathname.startsWith(`/${region}/accoun`)?"bg-primary-foreground text-black":'')}
                     href="/account"
                     data-testid="nav-account-link"
                   >
