@@ -15,7 +15,7 @@ const EmptyCartMessage = () => {
             Your Cart is Empty
           </Heading>
           <Text className="text-muted-foreground mb-6">
-            You don't have anything in your cart. Let's change that and find some amazing products for you!
+            You don&#39;t have anything in your cart. Let&#39;s change that and find some amazing products for you!
           </Text>
         </CardContent>
         <CardFooter className="pb-6 px-6">
