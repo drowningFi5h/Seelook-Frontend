@@ -89,7 +89,7 @@
   "devDependencies": {
     "@babel/core": "^7.17.5",
     "@medusajs/client-types": "^0.2.2",
-    "@medusajs/medusa": "^1.18.0",
+    "@medusajs/medusa": "1.18.0",
     "@medusajs/ui-preset": "^1.0.2",
     "@playwright/test": "^1.41.1",
     "@types/ioredis-mock": "^8",
